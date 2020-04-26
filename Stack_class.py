@@ -10,6 +10,7 @@ class Stack(object):
     def __init__(self):
         self.bottom = Node('tail')
         self.top = Node('Top')
+        self.length = 0
 
     def plug_in(self, key):
         new_node = Node(key)
@@ -19,20 +20,19 @@ class Stack(object):
         else :
             B.pre = new_node
             self.top = new_node
+        self.length = self.length + 1
 
     def show(self):
-        print('stack:', self.bottom)
+        print('stack:', self.bottom, 'length:', self.length)
 
     def Pop(self):
-        print(self.top)
+        i = 0
+        B = self.bottom
+        while i < self.length-1 :
+            B = B.pre
+            i = i + 1
+        B.pre = None
+        self.length = self.length - 1
+        return self.top
 
 
-S = Stack()
-S.plug_in(2)
-S.plug_in(3)
-S.plug_in(5)
-S.show()
-S.Pop()
-S.plug_in(11)
-S.show()
-S.Pop
