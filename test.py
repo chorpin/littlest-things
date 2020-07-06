@@ -19,13 +19,16 @@ def findSubstring(s, words):
                         dic[s[i:i+step]][1] = i
                         R = R + step
                         dic[s[i:i+step]][0] = 1
+                        for h in dic:
+                            if dic[h][1] < L:
+                                dic[h][0] = 0
                         if (R - L) == critia:
                             result.append(L)
                             #for h in dic:
                                 #dic[h][0] = 0
                     else:
                         L = dic[s[i:i+step]][1] + step
-                        #R = R + step
+                        R = R + step
                         dic[s[i:i + step]][0] = 1
                         dic[s[i:i + step]][1] = i
                         for h in dic:
@@ -33,8 +36,8 @@ def findSubstring(s, words):
                                 dic[h][0] = 0
                         if (R - L) == critia:
                             result.append(L)
-                            for h in dic:
-                                dic[h][0] = 0
+                            #for h in dic:
+                                #dic[h][0] = 0
 
                 else:
                     L = i + step
